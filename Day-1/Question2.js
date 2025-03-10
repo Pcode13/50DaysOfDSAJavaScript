@@ -28,3 +28,33 @@ console.log(isMonotonic([1, 2, 2, 3, 4])); // true (Increasing)
 console.log(isMonotonic([9, 7, 5, 3, 2])); // true (Decreasing)
 console.log(isMonotonic([1, 3, 2, 4]));    // false (Not Monotonic)
 console.log(isMonotonic([5, 5, 5, 5]));    // true (Constant is also Monotonic)
+
+
+const checkMonotonic = function (array){
+    if(array.length ===0){
+        return true 
+    } 	
+    const first = array[0];
+    const last = array[array.length-1];
+// 1.......10
+    if(first === last){
+        for(let i=0;i<array.length-1;i++){
+            if(array[i+1]!==array[i]) return false;
+        }
+    }
+    else if (first<last){
+        // non decreasing
+        for(let i=0;i<array.length-1;i++){
+            if(array[i+1]<array[i]) return false;
+        }
+    }
+    else{
+        // non increasing
+        for(let i=0;i<array.length-1;i++){
+            if(array[i+1]>array[i]) return false;
+        } 
+    }
+    return true;
+}
+
+checkMonotonic([9]);
